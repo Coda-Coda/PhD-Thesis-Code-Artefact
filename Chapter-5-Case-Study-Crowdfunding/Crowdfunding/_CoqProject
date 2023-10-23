@@ -1,0 +1,9 @@
+-R ../../DeepSEA DeepSpec
+-R . Crowdfunding
+./EdsgerIdents.v
+./DataTypes.v
+./DataTypeOps.v
+./DataTypeProofs.v
+./ContractModel.v
+./LayerCONTRACT.v
+./ObjCrowdfundingCodeProofs.v

@@ -1,0 +1,19 @@
+os: linux
+language: nix
+dist: xenial
+
+branches:
+  only:
+  - main
+
+cache:
+  directories:
+  - $TRAVIS_BUILD_DIR/../conflux-rust-3ea27d693c090cc99cb9f4096f8be1d0df83f265
+
+install:
+- nix-shell --run "make"
+- nix-shell --run "make edsger"
+
+script:
+- nix-shell --run "cd unittests; ./autorun_unittests.sh"
+- nix-shell --run "cd integration-tests; ./autorun_integration_tests.sh"

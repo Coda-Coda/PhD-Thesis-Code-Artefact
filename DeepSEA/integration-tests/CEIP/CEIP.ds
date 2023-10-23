@@ -1,0 +1,154 @@
+object signature UnderSig = {
+    doTransfer : unit -> unit;
+    doTransferReturn42 : unit -> int
+}
+
+object Under : UnderSig {
+    let doTransfer () =
+        transferEth(msg_sender, msg_value);
+        ()
+    
+    let doTransferReturn42 () =
+        transferEth(msg_sender, msg_value);
+        42
+}
+
+object UnderCopy : UnderSig {
+    let doTransfer () =
+        transferEth(msg_sender, msg_value);
+        ()
+    
+    let doTransferReturn42 () =
+        transferEth(msg_sender, msg_value);
+        42
+}
+
+object signature CEIPDemo = {
+    test1 : unit -> unit;
+    test2 : unit -> unit;
+    test3 : unit -> unit;
+    ifTest : bool -> unit;
+    forTest : unit -> unit;
+    test1A : unit -> unit;
+    test2A : unit -> unit;
+    test3A : unit -> unit;
+    test1B : unit -> unit;
+    test2B : unit -> unit;
+    test3B : unit -> unit;
+    test1C : unit -> unit;
+    test2C : unit -> unit;
+    test3C : unit -> unit;
+}
+
+(* Note that this only tests a handful of situations
+   where the Checks-Effects-Interactions pattern _is_
+   followed, not when it it is not followed. *)
+
+object Above (Under_object_A : UnderSig,
+              Under_object_B : UnderSig,
+              Under_object_C : UnderSig ) : CEIPDemo {
+    let _val : int := 0
+    
+    let test1 () =
+        _val := 42;
+        transferEth(msg_sender, msg_value)
+        
+    
+    let test2 () =
+        let val = _val in
+        transferEth(msg_sender, msg_value)
+    
+    let test3 () =
+        let balBefore = balance(this_address) in
+        transferEth(msg_sender, msg_value);
+        let balBefore' = balBefore in
+        ()
+  
+    let ifTest b =
+        let bal = self_balance in
+            if b then
+                transferEth(msg_sender, msg_value)
+            else
+                if !b then
+                    transferEth(msg_sender, msg_value)
+                else
+                    transferEth(msg_sender, msg_value);
+            ()
+
+    let forTest () =
+        for i = (int) balance(msg_sender) to 42 do
+        begin
+            ()
+        end;
+        transferEth(msg_sender, msg_value);
+        for i = 0 to 42 do
+        begin
+            ()
+        end;
+        ()
+
+    let test1A () =
+        _val := 42;
+        Under_object_A.doTransfer()
+        
+    
+    let test2A () =
+        let val = _val in
+        Under_object_A.doTransfer()
+    
+    let test3A () =
+        let balBefore = balance(this_address) in
+        Under_object_A.doTransfer();
+        let balBefore' = balBefore in
+        ()
+
+    let test1B () =
+        _val := 42;
+        Under_object_B.doTransfer()
+        
+    
+    let test2B () =
+        let val = _val in
+        Under_object_B.doTransfer()
+    
+    let test3B () =
+        let balBefore = balance(this_address) in
+        Under_object_B.doTransfer();
+        let balBefore' = balBefore in
+        ()
+
+    let test1C () =
+        _val := 42;
+        Under_object_C.doTransfer()
+        
+    
+    let test2C () =
+        let val = _val in
+        Under_object_C.doTransfer()
+    
+    let test3C () =
+        let balBefore = balance(this_address) in
+        Under_object_C.doTransfer();
+        let balBefore' = balBefore in
+        ()
+
+}
+
+
+layer signature UnderLayerSig = {
+  Under_object_A : { };
+  Under_object_B : { };
+  Under_object_C : { }
+}
+
+layer UNDER : [{}] UnderLayerSig = {
+  Under_object_A = Under;
+  Under_object_B = address(0x10033) <: UnderCopy;
+  Under_object_C = address(0x10032) <: (clone Under)
+}
+
+layer ABOVE : [ {Under_object_A : UnderSig; Under_object_B : UnderSig; Under_object_C : UnderSig} ]  {above : CEIPDemo}  = {
+    above = Above
+}
+
+layer CONTRACT = ABOVE @ UNDER

@@ -1,0 +1,11 @@
+object signature trivial = {
+    const trivial : unit -> unit
+}
+
+object Trivial : trivial {
+    let trivial () = ()
+}
+
+layer CONTRACT  = {
+    o = Trivial
+}

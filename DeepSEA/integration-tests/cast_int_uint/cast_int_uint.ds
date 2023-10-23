@@ -1,0 +1,17 @@
+object signature castDemo = {
+    const eq : int * uint -> bool;
+    const amIRich : unit -> bool
+}
+
+object Contract : castDemo {
+    let amIRich () =
+        let bal = (int) (uint) (int) (balance msg_sender) in
+        if (bal > 1000000000000000000 ) then true else false
+    
+    let eq (i, u) =
+        i = (int) u /\ u = (uint) i
+}
+
+layer CONTRACT  = {
+    o = Contract
+}

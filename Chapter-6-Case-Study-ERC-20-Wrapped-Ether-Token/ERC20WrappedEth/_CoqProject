@@ -1,0 +1,9 @@
+-R ../../DeepSEA DeepSpec
+-R . ERC20WrappedEth
+./EdsgerIdents.v
+./DataTypes.v
+./DataTypeOps.v
+./DataTypeProofs.v
+./ContractModel.v
+./LayerCONTRACT.v
+./ObjERC20WrappedEthCodeProofs.v

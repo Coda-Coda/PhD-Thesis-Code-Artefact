@@ -1,0 +1,12 @@
+🛈  Compiling to Coq: dsc ... coq
+ Compilation of CEIP_failure_expected1AB.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected1A.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected1BC.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected1B.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected1CA.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected1C.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected2A.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected2B.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected2C.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected3.ds Failed - This is expected - ✅ Test Passed
+ Compilation of CEIP_failure_expected4.ds Failed - This is expected - ✅ Test Passed

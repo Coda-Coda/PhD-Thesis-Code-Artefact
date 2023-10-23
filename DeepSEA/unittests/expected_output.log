@@ -1,0 +1,143 @@
+EthereumChain************************
+builtin-----------------------
+  address:                     pass✅
+  origin:                      pass✅
+  caller:                      pass✅
+  callvalue:                   pass✅
+  timestamp:                   pass✅
+  number:                      pass✅
+  balance(this_address):       pass✅
+  blockhash(parent):           pass✅
+keccak256---------------------
+  hash1:                       pass✅
+  hash2:                       pass✅
+  hash2_1:                     pass✅
+  hash2_2:                     pass✅
+  hash2_3:                     pass✅
+  hash1a:                      pass✅
+  hash2_1a:                    pass✅
+events------------------------
+  E0 signature:                pass✅
+  E1 signature:                pass✅
+  E1 values:                   pass✅
+  E2 signature:                pass✅
+  E2 values:                   pass✅
+  IE1 signature:               pass✅
+  IE1 values:                  pass✅
+  IE2 signature:               pass✅
+  IE2 values:                  pass✅
+  Transfer signature:          pass✅
+  Transfer values:             pass✅
+  Approval signature:          pass✅
+  Approval values:             pass✅
+address-----------------------
+  init:                        pass✅
+  get:                         pass✅ (with correct value)
+  set:                         pass✅
+  get:                         pass✅ (with correct value)
+asserts-----------------------
+  f:                           pass✅
+  g:                           pass✅
+  h:                           pass✅
+  i:                           pass✅
+  j:                           pass✅
+constructor-------------------
+  get:                         pass✅
+constructor2------------------
+  test_upper:                  pass✅
+  get_w:                       pass✅ (with correct value)
+forloop-----------------------
+  multiply:                    pass✅
+  multiply:                    pass✅
+layers1-----------------------
+  f:                           pass✅
+match-int---------------------
+  f:                           pass✅
+struct------------------------
+  initialize:                  pass✅
+  hasOwner:                    pass✅
+  hasSupply:                   pass✅
+  initialize:                  pass✅
+  hasSupply:                   pass✅
+  hasSupply:                   pass✅
+  hasSupply:                   pass✅
+  hasOwner:                    pass✅
+ConfluxChain*************************
+builtin-----------------------
+  address:                     pass✅
+  origin:                      pass✅
+  caller:                      pass✅
+  callvalue:                   pass✅
+  timestamp:                   pass✅
+  number:                      pass✅
+  balance(this_address):       pass✅
+  blockhash(parent):           pass✅
+keccak256---------------------
+  hash1:                       pass✅
+  hash2:                       pass✅
+  hash2_1:                     pass✅
+  hash2_2:                     pass✅
+  hash2_3:                     pass✅
+  hash1a:                      pass✅
+  hash2_1a:                    pass✅
+events------------------------
+  E0 signature:                pass✅
+  E1 signature:                pass✅
+  E1 values:                   pass✅
+  E2 signature:                pass✅
+  E2 values:                   pass✅
+  IE1 signature:               pass✅
+  IE1 values:                  pass✅
+  IE2 signature:               pass✅
+  IE2 values:                  pass✅
+  Transfer signature:          pass✅
+  Transfer values:             pass✅
+  Approval signature:          pass✅
+  Approval values:             pass✅
+address-----------------------
+  init:                        pass✅
+  get:                         pass✅ (with correct value)
+  set:                         pass✅
+  get:                         pass✅ (with correct value)
+asserts-----------------------
+  f:                           pass✅
+  g:                           pass✅
+  h:                           pass✅
+  i:                           pass✅
+  j:                           pass✅
+constructor-------------------
+  get:                         pass✅
+constructor2------------------
+  test_upper:                  pass✅
+  get_w:                       pass✅ (with correct value)
+forloop-----------------------
+  multiply:                    pass✅
+  multiply:                    pass✅
+layers1-----------------------
+  f:                           pass✅
+match-int---------------------
+  f:                           pass✅
+struct------------------------
+  initialize:                  pass✅
+  hasOwner:                    pass✅
+  hasSupply:                   pass✅
+  initialize:                  pass✅
+  hasSupply:                   pass✅
+  hasSupply:                   pass✅
+  hasSupply:                   pass✅
+  hasOwner:                    pass✅
+response (balanceOf): 100000
+response (transfer erc0 -> liq_prov): 32
+response (balanceOf liq_prov in erc0): 60000
+response (transfer erc1 -> liq_prov): 33
+response (transfer erc0 -> AMM): 34
+response (transfer erc1 -> AMM): 35
+response (mint): 36
+response (transfer erc0 -> AMM): 37
+response (getReserve0): 500
+response (getBalance0): 700
+response (balanceOf user in erc0): 0
+response (balanceOf user in erc1): 0
+response (simpleSwap0): 38
+response (balanceOf user in erc0): 0
+response (balanceOf user in erc1): 142

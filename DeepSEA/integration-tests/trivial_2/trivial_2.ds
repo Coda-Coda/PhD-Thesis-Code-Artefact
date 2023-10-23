@@ -1,0 +1,11 @@
+object signature trivial = {
+    const boolToInt : bool -> int
+}
+
+object Trivial : trivial {
+    let boolToInt b = if b then 1 else 0
+}
+
+layer CONTRACT  = {
+    o = Trivial
+}

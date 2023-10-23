@@ -1,0 +1,12 @@
+-R DeepSEA DeepSpec
+-R Chapter-5-Case-Study-Crowdfunding/Crowdfunding Crowdfunding
+-R Chapter-5-Case-Study-Crowdfunding/proofs SmartContract
+-R Chapter-6-Case-Study-ERC-20-Wrapped-Ether-Token/ERC20WrappedEth ERC20WrappedEth
+-R Chapter-6-Case-Study-ERC-20-Wrapped-Ether-Token/proofs SmartContractERC20WrappedEth
+
+-arg -w -arg -notation-overridden
+-arg -w -arg -ambiguous-paths
+-arg -w -arg -deprecated-hint-rewrite-without-locality
+-arg -w -arg -unknown-option
+-arg -w -arg -deprecated-option
+

@@ -1,0 +1,136 @@
+object signature UnderSig = {
+    doTransfer : unit -> unit;
+    doTransferReturn42 : unit -> int
+}
+
+object Under : UnderSig {
+    let doTransfer () =
+        transferEth(msg_sender, msg_value);
+        ()
+    
+    let doTransferReturn42 () =
+        transferEth(msg_sender, msg_value);
+        42
+}
+
+object UnderCopy : UnderSig {
+    let doTransfer () =
+        transferEth(msg_sender, msg_value);
+        ()
+    
+    let doTransferReturn42 () =
+        transferEth(msg_sender, msg_value);
+        42
+}
+
+object signature CEIPDemo = {
+    (* layerTest1A : unit -> unit;
+    layerTest1B : unit -> unit;
+    layerTest1C : unit -> unit;
+    layerTest1AB : unit -> unit; *)
+    layerTest1BC : unit -> unit;
+    (* layerTest1CA : unit -> unit;
+    layerTest2A : unit -> unit;
+    layerTest2B : unit -> unit;
+    layerTest2C : unit -> unit;
+    layerTest3 : unit -> unit;
+    layerTest4 : unit -> int *)
+}
+
+(* Note that this only tests a handful of situations
+   where the Checks-Effects-Interactions pattern _is_
+   followed, not when it it is not followed. *)
+
+object Above (Under_object_A : UnderSig,
+              Under_object_B : UnderSig,
+              Under_object_C : UnderSig ) : CEIPDemo {
+    let _val : int := 0
+    
+    (* let layerTest1A () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_A.doTransfer();
+        Under_object_A.doTransfer();        
+        ()
+
+    let layerTest1B () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_B.doTransfer();
+        Under_object_B.doTransfer();
+        ()
+
+    let layerTest1C () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_C.doTransfer();
+        Under_object_C.doTransfer();
+        ()
+    
+    let layerTest1AB () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_A.doTransfer();
+        Under_object_B.doTransfer();
+        () *)
+
+    let layerTest1BC () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_B.doTransfer();
+        Under_object_C.doTransfer();
+        ()
+
+    (* let layerTest1CA () = 
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        Under_object_C.doTransfer();
+        Under_object_A.doTransfer();
+        ()
+
+    let layerTest2A () =
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        let x = Under_object_A.doTransferReturn42() in
+        _val := 0;
+        ()
+
+    let layerTest2B () =
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        let x = Under_object_B.doTransferReturn42() in
+        _val := 0;
+        ()
+    
+    let layerTest2C () =
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        let x = Under_object_C.doTransferReturn42() in
+        _val := 0;
+        ()
+
+    let layerTest3 () =
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        let y = 42 in
+        let x = Under_object_A.doTransferReturn42() in
+        _val := 0;
+        ()
+
+    let layerTest4 () =
+        (* The function below should cause verify_checks_effects_interactions_pattern to fail on it. *)
+        let y = 42 in
+        let x = Under_object_B.doTransferReturn42() in
+        _val := 0;
+        x *)
+
+}
+
+
+layer signature UnderLayerSig = {
+  Under_object_A : { };
+  Under_object_B : { };
+  Under_object_C : { }
+}
+
+layer UNDER : [{}] UnderLayerSig = {
+  Under_object_A = Under;
+  Under_object_B = address(0x10033) <: UnderCopy;
+  Under_object_C = address(0x10032) <: (clone Under)
+}
+
+layer ABOVE : [ {Under_object_A : UnderSig; Under_object_B : UnderSig; Under_object_C : UnderSig} ]  {above : CEIPDemo}  = {
+    above = Above
+}
+
+layer CONTRACT = ABOVE @ UNDER

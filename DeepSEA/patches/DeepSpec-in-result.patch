@@ -1,0 +1,12 @@
+diff --git a/Edsger/coqgen.ml b/Edsger/coqgen.ml
+--- a/Edsger/coqgen.ml
++++ b/Edsger/coqgen.ml
+@@ -4714,7 +4714,7 @@ Definition update_Outgoing_transfer_recipient_and_amount new_outgoing_transfer_r
+ let gen_coqProj env fileDeclarations = 
+   let stream = open_out (env.project_name ^ "/_CoqProject") in
+   output_string stream (
+-    "-R ../../.. DeepSpec\n" ^
++    "-R ../result DeepSpec\n" ^
+     "-R . " ^ env.project_name ^ "\n" ^
+     "./EdsgerIdents.v\n" ^
+     "./DataTypes.v\n" ^
