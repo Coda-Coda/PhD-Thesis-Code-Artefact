@@ -828,8 +828,8 @@ Global Opaque ERC20WrappedEth_transfer_opt.
               (CCload (LChash tint_Z32
                 (LChash thash_int_HASH_address_Z32
                   (LCvar ERC20WrappedEth_allowances_var)
-                  (@ECbuiltin0 _ _  _ builtin0_caller_impl))
-                (ECtempvar tint_U 11%positive (* _from *))))
+                  (ECtempvar tint_U 11%positive (* _from *)))
+                (@ECbuiltin0 _ _  _ builtin0_caller_impl)))
               (CCsequence
                 (CCassert (CCyield (ECbinop tint_bool Oge
                   (ECtempvar tint_Z32 18%positive (* approved_amount *))
@@ -839,8 +839,8 @@ Global Opaque ERC20WrappedEth_transfer_opt.
                     (LChash tint_Z32
                       (LChash thash_int_HASH_address_Z32
                         (LCvar ERC20WrappedEth_allowances_var)
-                        (@ECbuiltin0 _ _  _ builtin0_caller_impl))
-                      (ECtempvar tint_U 11%positive (* _from *)))
+                        (ECtempvar tint_U 11%positive (* _from *)))
+                      (@ECbuiltin0 _ _  _ builtin0_caller_impl))
                     (ECbinop tint_Z32 Osub
                       (ECtempvar tint_Z32 18%positive (* approved_amount *))
                       (ECtempvar tint_Z32 13%positive (* _value *))))

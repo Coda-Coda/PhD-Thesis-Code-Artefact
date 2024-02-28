@@ -44,9 +44,9 @@ object ERC20WrappedEth () : ERC20WrappedEthSig {
       assert(_from <> this_address);
       assert(_from <> _to);
       assert(msg_value = 0);
-      let approved_amount = allowances[msg_sender][_from] in
+      let approved_amount = allowances[_from][msg_sender] in
       assert(approved_amount >= _value);
-      allowances[msg_sender][_from] := approved_amount - _value;
+      allowances[_from][msg_sender] := approved_amount - _value;
       let wrapped_amount_from = wrapped[_from] in
       let wrapped_amount_to = wrapped[_to] in
       assert(wrapped_amount_from >= _value);
