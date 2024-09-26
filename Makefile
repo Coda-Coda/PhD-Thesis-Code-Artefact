@@ -13,6 +13,10 @@ erc20WrappedEther: deepsea
 dsc: deepsea
 	nix-shell contracts-full-shell.nix --command "cd DeepSEA; make edsger"
 
+trivial-full: dsc
+	nix-shell contracts-full-shell.nix --command "cd Trivial; rm -rf trivial; dsc trivial.ds coq; cd trivial; coqdep -f _CoqProject > .coqdeps.d; coq_makefile -arg '-quiet' -f _CoqProject -o core.make"
+	cd Trivial/trivial; make -f core.make
+
 crowdfunding-full: dsc
 	nix-shell contracts-full-shell.nix --command "cd Chapter-5-Case-Study-Crowdfunding; rm -rf Crowdfunding; dsc Crowdfunding.ds coq; cd Crowdfunding; coqdep -f _CoqProject > .coqdeps.d; coq_makefile -arg '-quiet' -f _CoqProject -o core.make"
 	cd Chapter-5-Case-Study-Crowdfunding/Crowdfunding; make -f core.make

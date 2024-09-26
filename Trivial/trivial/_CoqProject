@@ -1,0 +1,9 @@
+-R ../../DeepSEA DeepSpec
+-R . trivial
+./EdsgerIdents.v
+./DataTypes.v
+./DataTypeOps.v
+./DataTypeProofs.v
+./ContractModel.v
+./LayerCONTRACT.v
+./ObjTrivialCodeProofs.v
