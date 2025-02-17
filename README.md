@@ -1,3 +1,7 @@
+See [Chapter-6-Case-Study-ERC-20-Wrapped-Ether-Token](./Chapter-6-Case-Study-ERC-20-Wrapped-Ether-Token) for the code directly related to the FMBC25 paper.
+
+------
+
 # Getting Started
 ## Codespaces + VSCoq (web)
 
